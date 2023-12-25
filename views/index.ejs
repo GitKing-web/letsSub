@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%- title %> </title>
+</head>
+<body>
+    <h1>TEST</h1>
+
+    
+    <input type="email" placeholder="email..." class="email">
+    <input type="text" placeholder="amount" class="amount">
+    <input type="submit" value="submit" class="btn"> 
+
+    <script>
+const email = document.querySelector('.email');
+const amount = document.querySelector('.amount');
+const btn = document.querySelector('.btn');
+
+
+btn.addEventListener('click', async e => {
+    e.preventDefault();
+
+    try {
+        await fetch(`/transfer?email=${email?.value}&amount=${amount.value}`,
+)
+        .then(res =>res.json())
+        .then(data => {
+            if(data.status === 200){
+                location.href = data.message.authorization_url;
+                btn.innerText = 'pay';
+            }
+        })
+        .catch(error => console.log(error));
+    } catch (error) {
+        console.log(error);
+    }
+})
+    </script>
+</body>
+</html>
