@@ -28,7 +28,7 @@ btn.addEventListener('click', async e => {
         .then(res =>res.json())
         .then(data => {
             if(data.status === 200){
-                location.href = data.message.authorization_url;
+                location.href = data.message.data.authorization_url;
                 btn.innerText = 'pay';
             }
         })
