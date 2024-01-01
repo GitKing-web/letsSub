@@ -1,42 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <%- title %> </title>
-</head>
-<body>
-    <h1>TEST</h1>
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />  
+<style>
+    .card{background: rgba(255,255,255,0.9); margin:20px;}
     
-    <input type="email" placeholder="email..." class="email">
-    <input type="text" placeholder="amount" class="amount">
-    <input type="submit" value="submit" class="btn"> 
-
-    <script>
-const email = document.querySelector('.email');
-const amount = document.querySelector('.amount');
-const btn = document.querySelector('.btn');
-
-
-btn.addEventListener('click', async e => {
-    e.preventDefault();
-
-    try {
-        await fetch(`/transfer?email=${email?.value}&amount=${amount.value}`,
-)
-        .then(res =>res.json())
-        .then(data => {
-            if(data.status === 200){
-                location.href = data.message.data.authorization_url;
-                btn.innerText = 'pay';
-            }
-        })
-        .catch(error => console.log(error));
-    } catch (error) {
-        console.log(error);
+    .form-control{
+        background-color: #f2f2f2 !important; 
+        border-radius: 5rem !important;
+        padding-left: 50px !important;
     }
-})
-    </script>
+
+    .form-control:focus{
+        background-color: #ffffff !important; 
+    }
+
+    .input-style i{
+        padding-left: 20px !important;
+    }
+    .btn{
+        border-radius: 5rem !important;
+    }
+</style>
+<script src="/js/lib/jquery-3.6.0.min.js" defer></script>
+<script src="/js/lib/bootstrap.min.js" defer></script>
+<script src="/js/lib/sweetalert.min.js" defer></script>
+<script src="/js/lib/custom.js" defer></script>
+<script src="/js/lib/axios.min.js" defer></script>
+
+
+<script src="/js/login.js" defer></script>
+</head>
+    
+<body class="theme-light">
+    
+<div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+    
+<div id="page">
+    
+    
+    
+    <div class="page-content mt-3">
+        
+        <div style="display:flex; justify-content:center; align-content:center;">
+        <div class="card card-style">
+            <div class="content ">
+                <div class="text-center">
+                    <h1 class="font-25 mb-3 text-dark" id="accountname2">Login To Let'sSub</h1>
+                </div>
+                
+                <form id="login-form">
+                <div class="px-2">
+                    <div class="input-style no-borders has-icon mb-4" id="phonediv">
+                        <i class="fa fa-phone"></i>
+                        <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone Number" required readonly />
+                        <label for="phone" class="color-highlight">Phone</label>
+                        <em>(required)</em>
+                    </div>
+                    <div class="input-style no-borders has-icon mb-4">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required readonly />
+                        <label for="password" class="color-highlight">Password</label>
+                        <em>(required)</em>
+                    </div>
+                    
+                    <button type="submit" id="submit-btn" style="width: 100%; background-color:;" class="btn btn-full btn-l font-600 font-15 btn-primary mt-4 rounded-s ">
+                        Login
+                    </button>
+
+                    <div class="row pt-5 mb-3">
+                        <div class="col-12 text-center font-15">
+                            <a class="text-dark" href="/recovery">Forget Password? Recover It</a> 
+                        </div>
+                        <div class="col-12 text-center font-15 mt-2">
+                            <a class="text-dark" href="/register">New User? Create Account</a>
+                        </div>
+                    </div>
+
+                </div>
+                </form>
+                
+            </div>
+        </div>
+        </div>
+        
+             
+        
+    </div>
+</div>
+
 </body>
 </html>
+
+

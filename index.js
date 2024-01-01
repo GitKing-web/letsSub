@@ -1,11 +1,12 @@
-const connectDB = require('./src/configs/index.configs');
-const app = require('./src/server');
+require("dotenv").config();
+const app = require("./src/app");
+const connectDb = require("./src/configs/db");
+
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, async () => {
-    await
-        connectDB()
-            .then(() => console.log('DB connected'))
-            .catch((error) => console.log(error))
-        console.log('server running on port... ', PORT);
-})
+connectDb()
+  .then(() => {
+    console.log("Db connected");
+    app.listen(PORT, () => console.log("Server running on port...", PORT));
+  })
+  .catch((error) => console.error(error));

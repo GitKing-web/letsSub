@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" media="all">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>   
+<link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+<!-- Fantasy -->
+<link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet">
+<style>
+.radio-view{
+  margin: auto;
+  padding: 0;
+  position:relative;
+  max-width:520px;
+
+}
+
+
+.iphone {
+  background: #ffffff;
+  border-radius: 1em;
+  box-sizing: border-box;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
+.iphone .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.75em;
+  margin-bottom: 2em;
+}
+.iphone .album-cover {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.iphone .album-cover img {
+  width: 160px;
+  height: 156px;
+  border-radius: 50%;
+}
+.iphone .album-cover .song-title {
+  
+  margin-top:10px;
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  color: #65717e;
+}
+.iphone .album-cover .artist-title {
+  text-align: center;
+  margin-top: 1em;
+  padding: 3px 20px 3px 20px;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #3333ff;
+  border-radius: 5px;
+}
+.iphone .track {
+  margin-top: 1em;
+  height: 10px;
+}
+.iphone .track div {
+  width: 5%;
+  height: 100%;
+  background: #3333ff;
+  opacity: 0.75;
+  border-radius: 15px;
+}
+.iphone .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+.iphone .lyrics {
+  color: #7e8a98;
+  margin-top: 2em;
+  text-align: center;
+  font-size: 0.75em;
+  display: flex;
+  flex-direction: column;
+}
+
+.neu {
+  box-shadow: -5px -5px 15px 0px #ffffff9e, 5px 5px 15px 0px #a3b1c6a8;
+  background: #e0e5ec;
+  border-radius: 2em;
+  border: 0;
+}
+
+.btn-r {
+  padding: 15px 20px 15px 20px;
+  border-radius: 30px;
+  color: #7e8a98;
+  outline: none;
+  cursor: pointer;
+  margin:0 25px 0px 25px;
+}
+.btn-r.lg {
+  font-size: 1em;
+}
+.btn-r:hover {
+  cursor: pointer;
+  background: #eff2f5;
+}
+
+.red {
+  color: #e22d49;
+}
+.spin {
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 20000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 20000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 20000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-transition: rotate(3600deg);
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+</style>
+<script src="/js/lib/jquery-3.6.0.min.js" defer></script>
+<script src="/js/lib/bootstrap.min.js" defer></script>
+<script src="/js/lib/sweetalert.min.js" defer></script>
+<script src="/js/lib/custom.js" defer></script>
+<script src="/js/buy-data.js" defer></script>
+</head>
+    
+<body class="theme-light">
+
+<div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+    
+<div id="page">
+            <div class="header header-fixed header-logo-center">
+            <a href="/" class="header-title">LetsSUB</a>
+        </div>
+
+       <%- include("./menu.ejs") %>
+        
+        
+</div>        
+
+        <div class="page-content header-clear-medium">
+        
+        <div class="card card-style">
+            
+            <div class="content">
+                <p class="mb-0 text-center">Data For All Network</p>
+                
+                <form method="post" class="dataplanForm" id="dataplanForm" action="buy-data">
+                        <fieldset>
+
+                            <div class="input-style input-style-always-active has-borders mb-4">
+                                <label for="networkid" class="color-theme opacity-80 font-700 font-12">Network</label>
+                                <select id="networkid" name="network">
+                                    <option value="" disabled="" selected="">Choose Network</option>
+                                                                            <option value="1" networkname="MTN" sme="On" gifting="On" corporate="On">MTN</option>
+                                                                            <option value="4" networkname="AIRTEL" sme="Off" gifting="Off" corporate="On">AIRTEL</option>
+                                                                            <option value="2" networkname="GLO" sme="Off" gifting="Off" corporate="On">GLO</option>
+                                                                            <option value="3" networkname="9MOBILE" sme="Off" gifting="Off" corporate="On">9MOBILE</option>
+                                                                    </select>
+                                <span><i class="fa fa-chevron-down"></i></span>
+                                <i class="fa fa-check disabled valid color-green-dark"></i>
+                                <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                <em></em>
+                            </div>
+ 
+                            <div class="input-style input-style-always-active has-borders mb-4">
+                                <label for="datagroup" class="color-theme opacity-80 font-700 font-12">Data Type</label>
+                                <select id="datagroup" name="datagroup">
+                                    <option value="">Select Type</option>
+                                    <option value="SME">SME</option>
+                                    <option value="Gifting">Gifting</option>
+                                    <option value="Corporate">Corporate</option>
+                                </select>
+                                <span><i class="fa fa-chevron-down"></i></span>
+                                <i class="fa fa-check disabled valid color-green-dark"></i>
+                                <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                <em></em>
+                            </div>
+
+                            <div class="input-style input-style-always-active has-borders mb-4">
+                                <label for="dataplan" class="color-theme opacity-80 font-700 font-12">Data Plan</label>
+                                <select id="dataplan" name="dataplan" required></select>
+                                <span><i class="fa fa-chevron-down"></i></span>
+                                <i class="fa fa-check disabled valid color-green-dark"></i>
+                                <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                <em></em>
+                            </div>
+ 
+                            <div class="input-style input-style-always-active has-borders validate-field mb-4">
+                                <label for="phone" class="color-theme opacity-80 font-700 font-12">Phone Number</label>
+                                <input type="number" onkeyup="verifyNetwork()" name="phone" placeholder="Phone Number" value="" class="round-small" id="phone" required  />
+                            </div>
+
+                            <p id="verifyer"></p>
+
+                            <div class="input-style input-style-always-active has-borders validate-field mb-4">
+                                <label for="amounttopay" class="color-theme opacity-80 font-700 font-12">Buying Amount</label>
+                                <input type="text" name="amounttopay" placeholder="" value="" class="round-small" id="amounttopay" readonly required  />
+                            </div>
+
+                            <div class="form-check icon-check">
+                                <input class="form-check-input" type="checkbox" name="ported_number" id="ported_number">
+                                <label class="form-check-label" for="ported_number">Disable Number Validator</label>
+                                <i class="icon-check-1 fa fa-square color-gray-dark font-16"></i>
+                                <i class="icon-check-2 fa fa-check-square font-16 color-highlight"></i>
+                            </div>
+
+                            <input name="transref" type="hidden" value="32521703141969" />
+                            <input name="transkey" id="transkey" type="hidden" />
+
+                            
+                            <div class="form-button">
+                            <button type="submit" id="data-btn" name="purchase-data" style="width: 100%; background-color:#5b0e9a;" class="btn btn-full btn-l font-600 font-15 btn-dark mt-4 rounded-s">
+                                   Buy Now
+                            </button>
+                            </div>
+                        </fieldset>
+                    </form>        
+            </div>
+
+        </div>
+
+</div>
+    
+    <button id="continue-transaction-prompt-btn" data-menu="continue-transaction-prompt" class="d-none"></button>
+
+    <!-- Verify transaction Prompt Model -->
+    <div id="continue-transaction-prompt" 
+         class="menu menu-box-modal rounded-m" 
+         data-menu-height="350" 
+         data-menu-width="300">
+        <h1 class="text-center mt-4"><i class="fa fa-3x fa-info-circle scale-box color-blue-dark shadow-xl rounded-circle"></i></h1>
+        <h3 class="text-center mt-3 font-700">Are you sure?</h3>
+        <p class="boxed-text-xl" id="continue-transaction-prompt-msg"></p>
+        <div class="row mb-0 me-3 ms-3">
+            <div class="col-6">
+                <a href="#" class="btn close-menu btn-full btn-m color-red-dark border-red-dark font-600 rounded-s">No</a>
+            </div>
+            <div class="col-6">
+                                <a href="#" data-menu="pin-modal" class="btn btn-full btn-m color-green-dark border-green-dark font-600 rounded-s">Yes</a>
+                            </div>
+        </div>
+    </div> 
+    
+    <!-- Confirm Trasaction Pin Model -->
+    <div id="pin-modal" 
+         class="menu menu-box-modal rounded-m bg-theme" 
+         data-menu-width="300"
+         data-menu-height="350">
+        <div class="menu-title">
+            <p class="color-highlight">Confirm Transaction </p>
+            <h1 class="font-800">Continue?</h1>
+            <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+        </div>
+        
+        <div class="content">
+            <div class="divider mt-n2"></div>
+            
+            <div class="row mb-0">
+                <div class="col-12">
+                    <div class="input-style input-style-always-active has-borders mb-4">
+                        <label for="form1" class="color-highlight">Transaction Pin</label>
+                        <input type="password" id="thetranspin" maxlength="4" class="form-control" placeholder="****" required>
+                    </div>
+                </div>
+            </div>
+            <button action-btn="" id="transpinbtn" style="width:100%" class="btn btn-full btn-l font-600 font-15 btn-dark mt-4 rounded-s">Continue</button>
+        </div>
+    </div>
+
+    <!-- Agent Account Upgrade Model -->
+    <div id="agent-upgrade-modal" 
+         class="menu menu-box-modal rounded-m bg-theme" 
+         data-menu-width="300"
+         data-menu-height="450">
+        <div class="menu-title">
+            <p class="color-highlight">Confirm Transaction </p>
+            <h1 class="font-800">Upgrade</h1>
+            <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+        </div>
+        
+        <div class="content">
+            <div class="divider mt-n2"></div>
+            <div id="agent-upgrade-msg" class="text-danger mb-3">
+            You are about to upgrade to an Agent Account. 
+            You can view our pricing page for details about the discounts available for Agents. 
+            <br/> You would be charged a total of N0 for this service. 
+            To continue, enter your transaction pin below.            </div>
+            <form action="./" method="POST" >
+            <div class="row mb-0">
+                                <div class="col-12">
+                    <div class="input-style input-style-always-active has-borders mb-4">
+                        <input type="password" name="kpin" maxlength="4" class="form-control" placeholder="****" required>
+                        <label for="form1" class="color-highlight">Transaction Pin</label>
+                    </div>
+                </div>
+                            </div>
+            <button type="submit" name="upgrade-to-agent" id="agent-upgrade-btn" style="width:100%" class="btn btn-full btn-l font-600 font-15 btn-dark mt-4 rounded-s">Continue</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Vendor Account Upgrade Model -->
+    <div id="vendor-upgrade-modal" 
+         class="menu menu-box-modal rounded-m bg-theme" 
+         data-menu-width="300"
+         data-menu-height="450">
+        <div class="menu-title">
+            <p class="color-highlight">Confirm Transaction </p>
+            <h1 class="font-800">Enter Pin</h1>
+            <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+        </div>
+        
+        <div class="content">
+            <div class="divider mt-n2"></div>
+            <div id="vendor-upgrade-msg" class="text-danger mb-3">
+            You are about to upgrade to a Vendor Account. 
+            You can view our pricing page for details about the discounts available for Vendors. 
+            <br/> You would be charged a total of N0 for this service. 
+            To continue, enter your transaction pin below.
+            </div>
+            <form action="./" method="POST" >
+            <div class="row mb-0">
+                <div class="col-12">
+                    <div class="input-style input-style-always-active has-borders mb-4">
+                        <input type="password" name="kpin" maxlength="4" class="form-control" placeholder="1234" required>
+                        <label for="form1" class="color-highlight">Transaction Pin</label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" name="upgrade-to-vendor" id="vendor-upgrade-btn" style="width:100%" class="btn btn-full btn-l font-600 font-15 btn-dark mt-4 rounded-s">Continue</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    
+    
+    <!-- Main Menu--> 
+    <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-width="280" data-menu-active="nav-pages">
+        <div class="mt-4"></div>
+<div class="list-group list-custom-small list-menu">
+
+    <a href="/">
+        <i class="fa fa-home color-white" style="background-color:#5b0e9a"></i>
+        <span>Home</span>
+        <i class="fa fa-angle-right"></i>
+    </a>
+    <a href="fund-wallet">
+        <i class="fa fa-arrow-up color-white" style="background-color:#5b0e9a"></i>
+        <span>Fund Wallet</span>
+        <i class="fa fa-angle-right"></i>
+    </a>
+    <a href="buy-data">
+        <i class="fa fa-wifi color-white" style="background-color:#5b0e9a"></i>
+        <span>Buy Data</span>
+        <i class="fa fa-angle-right"></i>
+    </a>
+    <a href="buy-airtime">
+        <i class="fa fa-mobile color-white" style="background-color:#5b0e9a"></i>
+        <span>Buy Airtime</span>
+        <i class="fa fa-angle-right"></i>
+    </a>
+    <a href="transactions">
+        <i class="fa fa-receipt color-white" style="background-color:#5b0e9a"></i>
+        <span>Transactions</span>
+        <i class="fa fa-angle-right"></i>
+    </a>
+    <a href="pricing">
+        <i class="fa fa-list-alt color-white" style="background-color:#5b0e9a"></i>
+        <span>Pricing</span>
+        <i class="fa fa-angle-right"></i>
+    </a>
+    <a href="notifications">
+        <i class="fa fa-list color-white" style="background-color:#5b0e9a"></i>
+        <span>Notifications</span>
+        <i class="fa fa-angle-right"></i>
+    </a>
+    <a href="profile">
+        <i class="fa fa-user color-white" style="background-color:#5b0e9a"></i>
+        <span>Profile</span>
+        <i class="fa fa-angle-right"></i>
+    </a>
+    <a href="referrals">
+        <i class="fa fa-users color-white" style="background-color:#5b0e9a"></i>
+        <span>Referrals</span>
+        <i class="fa fa-angle-right"></i>
+    </a>
+    <a href="logout">
+        <i class="fa fa-lock color-white" style="background-color:#5b0e9a"></i>
+        <span>Logout</span>
+        <i class="fa fa-angle-right"></i>
+    </a>
+    
+</div>
+
+    </div>
+     
+    
+</div>
+</body>
+</html>

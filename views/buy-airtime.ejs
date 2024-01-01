@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>Buy Airtime</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" media="all">
+<link rel="stylesheet" type="text/css" href="/css//style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+<!-- Fantasy -->
+<link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet">
+<style>
+.radio-view{
+  margin: auto;
+  padding: 0;
+  position:relative;
+  max-width:520px;
+
+}
+
+
+.iphone {
+  background: #ffffff;
+  border-radius: 1em;
+  box-sizing: border-box;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
+.iphone .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.75em;
+  margin-bottom: 2em;
+}
+.iphone .album-cover {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.iphone .album-cover img {
+  width: 160px;
+  height: 156px;
+  border-radius: 50%;
+}
+.iphone .album-cover .song-title {
+  
+  margin-top:10px;
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  color: #65717e;
+}
+.iphone .album-cover .artist-title {
+  text-align: center;
+  margin-top: 1em;
+  padding: 3px 20px 3px 20px;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #3333ff;
+  border-radius: 5px;
+}
+.iphone .track {
+  margin-top: 1em;
+  height: 10px;
+}
+.iphone .track div {
+  width: 5%;
+  height: 100%;
+  background: #3333ff;
+  opacity: 0.75;
+  border-radius: 15px;
+}
+.iphone .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+.iphone .lyrics {
+  color: #7e8a98;
+  margin-top: 2em;
+  text-align: center;
+  font-size: 0.75em;
+  display: flex;
+  flex-direction: column;
+}
+
+.neu {
+  box-shadow: -5px -5px 15px 0px #ffffff9e, 5px 5px 15px 0px #a3b1c6a8;
+  background: #e0e5ec;
+  border-radius: 2em;
+  border: 0;
+}
+
+.btn-r {
+  padding: 15px 20px 15px 20px;
+  border-radius: 30px;
+  color: #7e8a98;
+  outline: none;
+  cursor: pointer;
+  margin:0 25px 0px 25px;
+}
+.btn-r.lg {
+  font-size: 1em;
+}
+.btn-r:hover {
+  cursor: pointer;
+  background: #eff2f5;
+}
+
+.red {
+  color: #e22d49;
+}
+.spin {
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 20000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 20000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 20000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-transition: rotate(3600deg);
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+</style>
+<script src="/js/lib/jquery-3.6.0.min.js" defer></script>
+<script src="/js/lib/bootstrap.min.js" defer></script>
+<script src="/js/lib/sweetalert.min.js" defer></script>
+<script src="/js/lib/custom.js" defer></script>
+</head>
+    
+<body class="theme-light">
+
+<div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+    
+<div id="page">
+
+            <div class="header header-fixed header-logo-center">
+            <a href="/" class="header-title">Let'sSUB</a>
+        </div>
+
+        <%- include("./menu.ejs") %>
+        
+        
+</div>        
+    
+		
+    <!-- Page content start here-->
+        <div class="page-content header-clear-medium">
+        
+        <div class="card card-style">
+            
+            <div class="content">
+                
+                <p class="mb-0 text-center font-600 color-highlight">Airtime For All Network</p>
+                <h6 class="text-center">Buy Airtime</h6>
+
+                <div class="row text-center mb-2">
+                
+                <form method="post" class="airtimeForm" id="airtimeForm" action="buy-airtime">
+                        <fieldset>
+ 
+                            <div class="input-style input-style-always-active has-borders mb-4">
+                                <label for="networkid" class="color-theme opacity-80 font-700 font-12">Network</label>
+                                <select id="networkid" name="network">
+                                    <option value="" disabled="" selected="">Select Network</option>
+                                                                            <option value="1" networkname="MTN" vtu="On" sharesell="On">MTN</option>
+                                                                            <option value="4" networkname="AIRTEL" vtu="On" sharesell="On">AIRTEL</option>
+                                                                            <option value="2" networkname="GLO" vtu="On" sharesell="On">GLO</option>
+                                                                            <option value="3" networkname="9MOBILE" vtu="On" sharesell="On">9MOBILE</option>
+                                                                    </select>
+                                <span><i class="fa fa-chevron-down"></i></span>
+                                <i class="fa fa-check disabled valid color-green-dark"></i>
+                                <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                <em></em>
+                            </div>
+
+                            
+
+                            <div class="input-style input-style-always-active has-borders mb-4">
+                                <label for="networktype" class="color-theme opacity-80 font-700 font-12">Type</label>
+                                <select id="networktype" name="networktype">
+                                    <option value="VTU">VTU</option>
+                                    <option value="Share And Sell">Share And Sell</option>
+                                </select>
+                                <span><i class="fa fa-chevron-down"></i></span>
+                                <i class="fa fa-check disabled valid color-green-dark"></i>
+                                <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                <em></em>
+                            </div>
+
+ 
+                            <div class="input-style input-style-always-active has-borders validate-field mb-4">
+                                <label for="phone" class="color-theme opacity-80 font-700 font-12">Phone Number</label>
+                                <input type="number" onkeyup="verifyNetwork()" name="phone" placeholder="Phone Number" value="" class="round-small" id="phone" required  />
+                            </div>
+
+                            <p id="verifyer"></p>
+
+                            
+                            <div class="input-style input-style-always-active has-borders mb-4">
+                                <label for="airtimeamount" class="color-theme opacity-80 font-700 font-12">Amount</label>
+                                <input type="number" name="amount" placeholder="Amount" value="" class="round-small" id="airtimeamount" required  />
+                            </div>
+
+                            <div class="input-style input-style-always-active has-borders validate-field mb-4">
+                                <label for="amounttopay" class="color-theme opacity-80 font-700 font-12">Amount To Pay</label>
+                                <input type="number" name="amounttopay" placeholder="Amount To Pay" value="" class="round-small" id="amounttopay" readonly required  />
+                            </div>
+
+                            <div class="input-style input-style-always-active has-borders validate-field mb-4">
+                                <label for="discount" class="color-theme opacity-80 font-700 font-12">Discount</label>
+                                <input type="text" name="discount" placeholder="Discount" value="" class="round-small" id="discount" readonly required  />
+                            </div>
+
+                            <div class="form-check icon-check">
+                                <input class="form-check-input" type="checkbox" name="ported_number" id="ported_number">
+                                <label class="form-check-label" for="ported_number">Disable Number Validator</label>
+                                <i class="icon-check-1 fa fa-square color-gray-dark font-16"></i>
+                                <i class="icon-check-2 fa fa-check-square font-16 color-highlight"></i>
+                            </div>
+
+                            <input name="transref" type="hidden" value="59361703142023" />
+                            <input name="transkey" id="transkey" type="hidden" />
+
+                            
+                            <div class="form-button">
+                            <button type="submit" id="airtime-btn" name="purchase-airtime" style="width: 100%; background-color:#5b0e9a;" class="btn btn-full btn-l font-600 font-15 mt-4 rounded-s">
+                                   Buy Airtime
+                            </button>
+                            </div>
+                        </fieldset>
+                    </form>        
+            </div>
+
+        </div>
+
+</div>
+
+<script>
+    $("document").ready(function(){
+        $("#networktype").on("change",function(){
+            $("#airtimeamount").val(null);
+            $("#amounttopay").val(null);
+            $("#discount").val(null);
+        });
+
+        $("#airtimeamount").on("keyup",function(){
+            var airtimediscount = '[{"aId":"1","aNetwork":"1","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"1","networkid":"1","smeId":"1","giftingId":"1","corporateId":"1","vtuId":"1","sharesellId":"1","network":"MTN","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"On","giftingStatus":"On","corporateStatus":"On","datapinStatus":"Off"},{"aId":"2","aNetwork":"2","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"2","networkid":"3","smeId":"3","giftingId":"3","corporateId":"3","vtuId":"3","sharesellId":"3","network":"GLO","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"3","aNetwork":"3","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"3","networkid":"4","smeId":"4","giftingId":"4","corporateId":"4","vtuId":"4","sharesellId":"4","network":"9MOBILE","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"4","aNetwork":"4","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"4","networkid":"2","smeId":"2","giftingId":"2","corporateId":"2","vtuId":"2","sharesellId":"2","network":"AIRTEL","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"5","aNetwork":"1","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"1","networkid":"1","smeId":"1","giftingId":"1","corporateId":"1","vtuId":"1","sharesellId":"1","network":"MTN","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"On","giftingStatus":"On","corporateStatus":"On","datapinStatus":"Off"},{"aId":"6","aNetwork":"2","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"2","networkid":"3","smeId":"3","giftingId":"3","corporateId":"3","vtuId":"3","sharesellId":"3","network":"GLO","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"7","aNetwork":"3","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"3","networkid":"4","smeId":"4","giftingId":"4","corporateId":"4","vtuId":"4","sharesellId":"4","network":"9MOBILE","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"8","aNetwork":"4","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"4","networkid":"2","smeId":"2","giftingId":"2","corporateId":"2","vtuId":"2","sharesellId":"2","network":"AIRTEL","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"}]';
+            if(!airtimediscount == ""){airtimediscount=JSON.parse(airtimediscount); }
+            var amounttopay=0;
+            var discount=0;
+            var useraccount = getCookie("loginAccount");
+            useraccount=useraccount.replace(/%3D/g,"=");
+            useraccount=atob(useraccount);
+            useraccount = parseInt(useraccount);
+            
+            var amount = $("#airtimeamount").val();
+            amount = parseInt(amount);
+            
+            if($("#networkid").val() == "" || $("#networkid").val() == null){
+                swal("Opps!!","Please Select A Network First.","info");
+                $("#airtimeamount").val(null);
+                return 0;
+            }
+
+            for (i=0; i< airtimediscount.length; i++){
+                if(airtimediscount[i].aNetwork == $("#networkid").val() && airtimediscount[i].aType == $("#networktype").val()){
+                    if(useraccount == 3 || useraccount =='3'){discount=airtimediscount[i].aVendorDiscount;}
+                    else if(useraccount == 2 || useraccount =='2'){discount=airtimediscount[i].aAgentDiscount;}
+                    else{discount=airtimediscount[i].aUserDiscount;}
+                    discount=parseInt(discount);
+                    amounttopay=(amount * discount)/100;
+                    discount=100 - discount;
+                }
+            }
+
+            $("#amounttopay").val(amounttopay);
+            $("#discount").val(discount+"%");
+
+        });
+
+
+        //Purchase Airtime
+        $("#airtimeForm").submit(function(e){
+           
+
+            if($("#thetranspin").val() == null || $("#thetranspin").val() == ''){
+                e.preventDefault();
+                $("#transpinbtn").attr("action-btn","airtime-btn");
+                
+                let msg = "You are about to purchase an ";
+                msg+='"'+$('#networkid').find(":selected").attr('networkname') + '"' + " airtime of ";
+                msg+='"' + $("#airtimeamount").val() + '"' + " for the phone number " + '"' + $("#phone").val() +'"';
+                msg+=" <br/> Do you wish to continue?"
+
+                $("#continue-transaction-prompt-msg").html(msg);
+                $("#continue-transaction-prompt-btn").click();
+
+                return;
+            }
+
+            $('#airtime-btn').removeClass("gradient-highlight");
+            $('#airtime-btn').addClass("btn-secondary");
+            $('#airtime-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
+            
+        });
+
+        // ----------------------------------------------------------------------------
+        // Cable Plan Management
+        // ----------------------------------------------------------------------------
+
+        //If provider selected, get plans
+        $("#cableid").on("change",function(){
+            if($("#cableid").val() == '' || $("#cableid").val() == null){
+                swal("Opps!!","Please Select A Provider First.","info"); 
+            }
+            else{
+                let provider = $("#cableid").val();
+                let useraccount = getCookie("loginAccount");
+                let plans = '[{"aId":"1","aNetwork":"1","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"1","networkid":"1","smeId":"1","giftingId":"1","corporateId":"1","vtuId":"1","sharesellId":"1","network":"MTN","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"On","giftingStatus":"On","corporateStatus":"On","datapinStatus":"Off"},{"aId":"2","aNetwork":"2","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"2","networkid":"3","smeId":"3","giftingId":"3","corporateId":"3","vtuId":"3","sharesellId":"3","network":"GLO","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"3","aNetwork":"3","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"3","networkid":"4","smeId":"4","giftingId":"4","corporateId":"4","vtuId":"4","sharesellId":"4","network":"9MOBILE","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"4","aNetwork":"4","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"4","networkid":"2","smeId":"2","giftingId":"2","corporateId":"2","vtuId":"2","sharesellId":"2","network":"AIRTEL","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"5","aNetwork":"1","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"1","networkid":"1","smeId":"1","giftingId":"1","corporateId":"1","vtuId":"1","sharesellId":"1","network":"MTN","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"On","giftingStatus":"On","corporateStatus":"On","datapinStatus":"Off"},{"aId":"6","aNetwork":"2","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"2","networkid":"3","smeId":"3","giftingId":"3","corporateId":"3","vtuId":"3","sharesellId":"3","network":"GLO","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"7","aNetwork":"3","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"3","networkid":"4","smeId":"4","giftingId":"4","corporateId":"4","vtuId":"4","sharesellId":"4","network":"9MOBILE","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"8","aNetwork":"4","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"4","networkid":"2","smeId":"2","giftingId":"2","corporateId":"2","vtuId":"2","sharesellId":"2","network":"AIRTEL","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"}]';
+                let options = "<option value=''>Select Plan</option>";
+                let price = 0;
+
+                useraccount=useraccount.replace(/%3D/g,"=");
+                useraccount=atob(useraccount);
+                useraccount = parseInt(useraccount);
+
+                if(!plans == ""){
+                    
+                    plans=JSON.parse(plans); 
+                   
+                    for(i=0; i < plans.length; i++){
+                        
+                        if(useraccount == 3 || useraccount =='3'){price = plans[i].vendorprice;}
+                        else if(useraccount == 2 || useraccount =='2'){price = plans[i].agentprice;}
+                        else{price = plans[i].userprice; }
+
+                        if(plans[i].cableprovider == provider){
+                            options+= "<option value='"+plans[i].cpId+"' cableprice='"+price+"' planname='"+plans[i].name+" (N"+plans[i].price+")("+plans[i].day+" Days) '>"+plans[i].name+" (N"+plans[i].price+")("+plans[i].day+" Days) </option>";
+                        }
+        
+                    }
+
+                }
+
+                $("#cableplan").html(options);
+                $("#amounttopay").val(null);
+               
+            }
+        });
+
+        //If Cable Plan Is Selected, Get And Set The Price
+        $("#cableplan").on("change",function(){
+            $("#amounttopay").val("N"+$('#cableplan').find(":selected").attr('cableprice'));
+            $("#cabledetails").val($('#cableplan').find(":selected").attr('planname'));
+        });
+
+        //Verify cableplan
+        $("#verifycableplanForm").submit(function(e){
+           
+           $('#cable-btn').removeClass("gradient-highlight");
+           $('#cable-btn').addClass("btn-secondary");
+           $('#cable-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
+           
+       });
+
+       //Purchase Cable Plan
+       $("#cableplanForm").submit(function(e){
+           
+
+           if($("#thetranspin").val() == null || $("#thetranspin").val() == ''){
+               e.preventDefault();
+               $("#transpinbtn").attr("action-btn","cable-btn");
+               
+               let msg = "You are about to purchase ";
+               let cableplan = $('#cabledetails').val();
+               msg+='"'+cableplan+" for the IUC Number " + '"' + $("#iucnumber").val() +'"';
+               msg+=" <br/> Do you wish to continue?"
+
+               $("#continue-transaction-prompt-msg").html(msg);
+               $("#continue-transaction-prompt-btn").click();
+
+               return;
+           }
+
+           $('#cable-btn').removeClass("gradient-highlight");
+           $('#cable-btn').addClass("btn-secondary");
+           $('#cable-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
+           
+       });
+
+        // ----------------------------------------------------------------------------
+        // Recharge Card Pin Management
+        // ----------------------------------------------------------------------------
+        $("#rechargepinamount").on("keyup",function(){
+            $("#amounttopay").val(null);
+            $("#norechargepin").val(null);
+        });
+
+        $("#norechargepin").on("keyup",function(){
+            
+            if($("#rechargepinamount").val() != null || $("#norechargepin").val() != null){
+                var airtimediscount = '[{"aId":"1","aNetwork":"1","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"1","networkid":"1","smeId":"1","giftingId":"1","corporateId":"1","vtuId":"1","sharesellId":"1","network":"MTN","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"On","giftingStatus":"On","corporateStatus":"On","datapinStatus":"Off"},{"aId":"2","aNetwork":"2","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"2","networkid":"3","smeId":"3","giftingId":"3","corporateId":"3","vtuId":"3","sharesellId":"3","network":"GLO","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"3","aNetwork":"3","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"3","networkid":"4","smeId":"4","giftingId":"4","corporateId":"4","vtuId":"4","sharesellId":"4","network":"9MOBILE","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"4","aNetwork":"4","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"4","networkid":"2","smeId":"2","giftingId":"2","corporateId":"2","vtuId":"2","sharesellId":"2","network":"AIRTEL","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"5","aNetwork":"1","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"1","networkid":"1","smeId":"1","giftingId":"1","corporateId":"1","vtuId":"1","sharesellId":"1","network":"MTN","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"On","giftingStatus":"On","corporateStatus":"On","datapinStatus":"Off"},{"aId":"6","aNetwork":"2","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"2","networkid":"3","smeId":"3","giftingId":"3","corporateId":"3","vtuId":"3","sharesellId":"3","network":"GLO","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"7","aNetwork":"3","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"3","networkid":"4","smeId":"4","giftingId":"4","corporateId":"4","vtuId":"4","sharesellId":"4","network":"9MOBILE","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"8","aNetwork":"4","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"4","networkid":"2","smeId":"2","giftingId":"2","corporateId":"2","vtuId":"2","sharesellId":"2","network":"AIRTEL","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"}]';
+                if(!airtimediscount == ""){airtimediscount=JSON.parse(airtimediscount); }
+                var amounttopay=0;
+                var discount=0;
+                var useraccount = getCookie("loginAccount");
+                useraccount=useraccount.replace(/%3D/g,"=");
+                useraccount=atob(useraccount);
+                useraccount = parseInt(useraccount);
+                
+                var amount = $("#rechargepinamount").val();
+                let quantity = parseInt($("#norechargepin").val());
+                    
+                amount = parseInt(amount);
+                quantity = parseInt(quantity);
+                
+                if($("#networkid").val() == "" || $("#networkid").val() == null){
+                    swal("Opps!!","Please Select A Network First.","info");
+                    $("#rechargepinamount").val(null);
+                    return 0;
+                }
+
+                for (i=0; i< airtimediscount.length; i++){
+                    if(airtimediscount[i].aNetwork == $("#networkid").val()){
+                        if(useraccount == 3 || useraccount =='3'){discount=airtimediscount[i].aVendorDiscount;}
+                        else if(useraccount == 2 || useraccount =='2'){discount=airtimediscount[i].aAgentDiscount;}
+                        else{discount=airtimediscount[i].aUserDiscount;}
+                        discount=parseInt(discount);
+                        if(!(quantity > 0)){quantity=0;}
+                        if(!(amount > 0)){amount=0;}
+                        amounttopay= amount * quantity;
+                        amounttopay=(amounttopay * discount)/100;
+                        discount=100 - discount;
+                    }
+                }
+
+                $("#amounttopay").val(amounttopay);
+                $("#discount").val(discount+"%");
+            }
+            else{$("#amounttopay").val("0");}
+        });
+
+        //Purchase Exam Pin
+       $("#rechargepinForm").submit(function(e){
+           
+           if($("#thetranspin").val() == null || $("#thetranspin").val() == ''){
+               e.preventDefault();
+               $("#transpinbtn").attr("action-btn","rechargepin-btn");
+               
+               let msg = "You are about to purchase ";
+               msg+=$("#norechargepin").val()+' unit of N'+$("#rechargepinamount").val()+' ';
+               msg+=$('#networkid').find(":selected").attr('networkname')+" recharge card pin at the price of N"+$("#amounttopay").val()+" with the business name "+$("#businessname").val();
+               msg+=" <br/> Do you wish to continue?"
+
+               $("#continue-transaction-prompt-msg").html(msg);
+               $("#continue-transaction-prompt-btn").click();
+
+               return;
+           }
+
+           $('#rechargepin-btn').removeClass("gradient-highlight");
+           $('#rechargepin-btn').addClass("btn-secondary");
+           $('#rechargepin-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
+           
+       });
+
+        // ----------------------------------------------------------------------------
+        // Exam Pin Management
+        // ----------------------------------------------------------------------------
+
+        $("#examid").on("change",function(){
+            $("#amounttopay").val(null);
+            $("#examquantity").val(null);
+        });
+
+        $("#examquantity").on("keyup",function(){
+            
+            if($("#examid").val() != null || $("#examquantity").val() != null){
+                let price = parseInt($('#examid').find(":selected").attr('providerprice'));
+                let quantity =parseInt($("#examquantity").val());
+                let amount = 0;
+                
+                if(!(quantity > 0)){quantity=0;}
+                if(!(price > 0)){price=0;}
+
+                amount = price * quantity;
+
+                $("#amounttopay").val("N"+amount);
+            }
+            else{$("#amounttopay").val("0");}
+
+        });
+
+        //Purchase Exam Pin
+       $("#exampinForm").submit(function(e){
+           
+           if($("#thetranspin").val() == null || $("#thetranspin").val() == ''){
+               e.preventDefault();
+               $("#transpinbtn").attr("action-btn","exampin-btn");
+               
+               let msg = "You are about to purchase ";
+               let exampindetails = $('#examid').find(":selected").attr('providername');
+               msg+=$("#examquantity").val()+' token of  '+exampindetails+' ';
+               msg+=" pin at the price of "+$("#amounttopay").val();
+               msg+=" <br/> Do you wish to continue?"
+
+               $("#continue-transaction-prompt-msg").html(msg);
+               $("#continue-transaction-prompt-btn").click();
+
+               return;
+           }
+
+           $('#exampin-btn').removeClass("gradient-highlight");
+           $('#exampin-btn').addClass("btn-secondary");
+           $('#exampin-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
+           
+       });
+
+
+        // ----------------------------------------------------------------------------
+        // Electricity Management
+        // ----------------------------------------------------------------------------
+
+        //If Amount Input, Get And Set The Price
+        $("#meteramount").on("keyup",function(){
+            let amount = parseInt($('#meteramount').val());
+            let electricitycharges = parseInt($('#electricitycharges').text());
+            let amounttopay = amount + electricitycharges;
+            $("#amounttopay").val("N"+amounttopay);
+            $("#electricitydetails").val($('#electricityid').find(":selected").attr('providername'));
+        });
+
+        $("#verifyelectricityplanForm").submit(function(e){
+           let amount= parseInt($('#meteramount').val());
+           
+           if(amount < 1000){
+            e.preventDefault();
+            swal("Alert!!","Minimum Unit Purchase Is N1000.","error");
+            return null;
+           }
+
+           $('#electricity-btn').removeClass("gradient-highlight");
+           $('#electricity-btn').addClass("btn-secondary");
+           $('#electricity-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
+           
+       });
+
+       //Purchase Electricity Plan
+       $("#electricityForm").submit(function(e){
+           
+
+           if($("#thetranspin").val() == null || $("#thetranspin").val() == ''){
+               e.preventDefault();
+               $("#transpinbtn").attr("action-btn","electricity-btn");
+               
+               let msg = "You are about to purchase ";
+               let electricitydetails = $('#electricitydetails').val();
+               msg+='"'+electricitydetails+" ("+$("#metertype").val()+") for the Meter Number " + '"' + $("#meternumber").val() +'"';
+               msg+=" at the price of "+$("#amounttopay").val();
+               msg+=" <br/> Do you wish to continue?"
+
+               $("#continue-transaction-prompt-msg").html(msg);
+               $("#continue-transaction-prompt-btn").click();
+
+               return;
+           }
+
+           $('#electricity-btn').removeClass("gradient-highlight");
+           $('#electricity-btn').addClass("btn-secondary");
+           $('#electricity-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
+           
+       });
+
+        // ----------------------------------------------------------------------------
+        // Data Plan Management
+        // ----------------------------------------------------------------------------
+
+        //If  notwork selected, empty data type, plan, amount
+        $("#networkid").on("change",function(){
+            $("#datagroup").val(null);
+            $("#dataplan").val(null);
+            $("#amounttopay").val(null);
+
+            let sme = $('#networkid').find(":selected").attr('sme');
+            let gifting = $('#networkid').find(":selected").attr('gifting');
+            let corporate = $('#networkid').find(":selected").attr('corporate');
+            let vtu = $('#networkid').find(":selected").attr('vtu');
+            let sharesell = $('#networkid').find(":selected").attr('sharesell');
+            let networkname = $('#networkid').find(":selected").attr('networkname');
+            let thegroup='<option value="">Select Type</option>';
+
+                //Check If Network Is Disabled
+                if(sme=="On"){
+                    thegroup+='<option value="SME">SME</option>';
+                }
+
+                //Check If Network Is Disabled
+                if(gifting=="On"){
+                   thegroup+='<option value="Gifting">Gifting</option>';
+                }
+
+                //Check If Network Is Disabled
+                if(corporate=="On"){
+                   thegroup+='<option value="Corporate">Corporate</option>';
+                }
+
+                //Check If Network Is Disabled
+                if(vtu=="On"){
+                   thegroup+='<option value="VTU">VTU</option>';
+                }
+
+                //Check If Network Is Disabled
+                if(sharesell=="On"){
+                   thegroup+='<option value="Share And Sell">Share And Sell</option>';
+                }
+                $("#datagroup").html(thegroup);
+                $("#networktype").html(thegroup);
+        });
+
+        //If data type selected, get plans
+        $("#datagroup").on("change",function(){
+            if($("#networkid").val() == '' || $("#networkid").val() == null){
+                swal("Opps!!","Please Select A Network First.","info"); 
+            }
+            else{
+                let network = $("#networkid").val();
+                let datagroup = $("#datagroup").val();
+                let useraccount = getCookie("loginAccount");
+                let plans = '[{"aId":"1","aNetwork":"1","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"1","networkid":"1","smeId":"1","giftingId":"1","corporateId":"1","vtuId":"1","sharesellId":"1","network":"MTN","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"On","giftingStatus":"On","corporateStatus":"On","datapinStatus":"Off"},{"aId":"2","aNetwork":"2","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"2","networkid":"3","smeId":"3","giftingId":"3","corporateId":"3","vtuId":"3","sharesellId":"3","network":"GLO","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"3","aNetwork":"3","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"3","networkid":"4","smeId":"4","giftingId":"4","corporateId":"4","vtuId":"4","sharesellId":"4","network":"9MOBILE","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"4","aNetwork":"4","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"4","networkid":"2","smeId":"2","giftingId":"2","corporateId":"2","vtuId":"2","sharesellId":"2","network":"AIRTEL","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"5","aNetwork":"1","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"1","networkid":"1","smeId":"1","giftingId":"1","corporateId":"1","vtuId":"1","sharesellId":"1","network":"MTN","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"On","giftingStatus":"On","corporateStatus":"On","datapinStatus":"Off"},{"aId":"6","aNetwork":"2","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"2","networkid":"3","smeId":"3","giftingId":"3","corporateId":"3","vtuId":"3","sharesellId":"3","network":"GLO","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"7","aNetwork":"3","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"3","networkid":"4","smeId":"4","giftingId":"4","corporateId":"4","vtuId":"4","sharesellId":"4","network":"9MOBILE","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"8","aNetwork":"4","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"4","networkid":"2","smeId":"2","giftingId":"2","corporateId":"2","vtuId":"2","sharesellId":"2","network":"AIRTEL","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"}]';
+                let options = "<option value=''>Select Plan</option>";
+                let price = 0;
+                let networkname = $('#networkid').find(":selected").attr('networkname');
+
+                
+                useraccount=useraccount.replace(/%3D/g,"=");
+                useraccount=atob(useraccount);
+                useraccount = parseInt(useraccount);
+
+                if(!plans == ""){
+                    
+                    plans=JSON.parse(plans); 
+                
+                    for(i=0; i < plans.length; i++){
+                        
+                        if(useraccount == 3 || useraccount =='3'){price = plans[i].vendorprice;}
+                        else if(useraccount == 2 || useraccount =='2'){price = plans[i].agentprice;}
+                        else{price = plans[i].userprice; }
+
+                        if(plans[i].datanetwork == network && plans[i].type == datagroup){
+                            options+= "<option value='"+plans[i].pId+"' dataprice='"+price+"' dataname='"+plans[i].name+" "+plans[i].type+" (N"+price+")("+plans[i].day+" Days) '>"+plans[i].name+" "+plans[i].type+" (N"+price+")("+plans[i].day+" Days)</option>";
+                        }
+        
+                    }
+
+                }
+
+                $("#dataplan").html(options);
+                $("#amounttopay").val(null);
+               
+            }
+        });
+
+        //If Data Plan Is Selected, Get And Set The Price
+        $("#dataplan").on("change",function(){
+            $("#amounttopay").val("N"+$('#dataplan').find(":selected").attr('dataprice'));
+        });
+
+        //Purchase Data
+        $("#dataplanForm").submit(function(e){
+           
+
+           if($("#thetranspin").val() == null || $("#thetranspin").val() == ''){
+               e.preventDefault();
+               $("#transpinbtn").attr("action-btn","data-btn");
+               
+               let msg = "You are about to purchase ";
+               let dataplan = $('#dataplan').find(":selected").attr('dataname');
+               msg+='"'+$('#networkid').find(":selected").attr('networkname') + '" ' + dataplan +" plan of ";
+               msg+='"' + $("#amounttopay").val() + '"' + " for the phone number " + '"' + $("#phone").val() +'"';
+               msg+=" <br/> Do you wish to continue?"
+
+               $("#continue-transaction-prompt-msg").html(msg);
+               $("#continue-transaction-prompt-btn").click();
+
+               return;
+           }
+
+           $('#data-btn').removeClass("gradient-highlight");
+           $('#data-btn').addClass("btn-secondary");
+           $('#data-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
+           
+       });
+
+       // ----------------------------------------------------------------------------
+       // Data Pin
+       // ----------------------------------------------------------------------------
+
+       //If data type selected, get plans
+       $("#datapingroup").on("change",function(){
+           
+           if($("#datanetworkid").val() == '' || $("#datanetworkid").val() == null){
+               swal("Opps!!","Please Select A Network First.","info"); 
+               return 0;
+           }
+           
+           let network = $("#datanetworkid").val();
+           let datagroup = $("#datapingroup").val();
+           let useraccount = getCookie("loginAccount");
+           let plans = '[{"aId":"1","aNetwork":"1","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"1","networkid":"1","smeId":"1","giftingId":"1","corporateId":"1","vtuId":"1","sharesellId":"1","network":"MTN","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"On","giftingStatus":"On","corporateStatus":"On","datapinStatus":"Off"},{"aId":"2","aNetwork":"2","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"2","networkid":"3","smeId":"3","giftingId":"3","corporateId":"3","vtuId":"3","sharesellId":"3","network":"GLO","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"3","aNetwork":"3","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"3","networkid":"4","smeId":"4","giftingId":"4","corporateId":"4","vtuId":"4","sharesellId":"4","network":"9MOBILE","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"4","aNetwork":"4","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"VTU","nId":"4","networkid":"2","smeId":"2","giftingId":"2","corporateId":"2","vtuId":"2","sharesellId":"2","network":"AIRTEL","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"5","aNetwork":"1","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"1","networkid":"1","smeId":"1","giftingId":"1","corporateId":"1","vtuId":"1","sharesellId":"1","network":"MTN","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"On","giftingStatus":"On","corporateStatus":"On","datapinStatus":"Off"},{"aId":"6","aNetwork":"2","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"2","networkid":"3","smeId":"3","giftingId":"3","corporateId":"3","vtuId":"3","sharesellId":"3","network":"GLO","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"7","aNetwork":"3","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"3","networkid":"4","smeId":"4","giftingId":"4","corporateId":"4","vtuId":"4","sharesellId":"4","network":"9MOBILE","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"},{"aId":"8","aNetwork":"4","aBuyDiscount":"94","aUserDiscount":"94","aAgentDiscount":"94","aVendorDiscount":"94","aType":"Share And Sell","nId":"4","networkid":"2","smeId":"2","giftingId":"2","corporateId":"2","vtuId":"2","sharesellId":"2","network":"AIRTEL","networkStatus":"On","vtuStatus":"On","sharesellStatus":"On","airtimepinStatus":"Off","smeStatus":"Off","giftingStatus":"Off","corporateStatus":"On","datapinStatus":"Off"}]';
+           let options = "<option value=''>Select Plan</option>";
+           let price = 0;
+           let networkname = $('#datanetworkid').find(":selected").attr('networkname');
+           
+
+           useraccount=useraccount.replace(/%3D/g,"=");
+           useraccount=atob(useraccount);
+           useraccount = parseInt(useraccount);
+
+           if(!plans == ""){
+               
+               plans=JSON.parse(plans); 
+           
+               for(i=0; i < plans.length; i++){
+                   
+                   if(useraccount == 3 || useraccount =='3'){price = plans[i].vendorprice;}
+                   else if(useraccount == 2 || useraccount =='2'){price = plans[i].agentprice;}
+                   else{price = plans[i].userprice; }
+
+                   if(plans[i].datanetwork == network && plans[i].type == datagroup){
+                       options+= "<option value='"+plans[i].dpId+"' dataprice='"+price+"' dataname='"+plans[i].name+" "+plans[i].type+" (N"+price+")("+plans[i].day+" Days) '>"+plans[i].name+" "+plans[i].type+" (N"+price+")("+plans[i].day+" Days)</option>";
+                   }
+   
+               }
+
+           }
+
+           $("#datapinplan").html(options);
+           $("#amount").val(null);
+           $("#amounttopay").val(null);
+
+
+   });
+
+   //If Data Plan Is Selected, Get And Set The Price
+   $("#datapinplan").on("change",function(){
+       $("#amount").val($('#datapinplan').find(":selected").attr('dataprice'));
+   });
+
+   $("#datapinquantity").on("change",function(){
+       
+       if($("#datanetworkid").val() == '' || $("#datanetworkid").val() == null){
+           swal("Opps!!","Please Select A Network First.","info"); 
+       }
+       else{
+           let price = parseInt($("#amount").val());
+           let quantity = parseInt($("#datapinquantity").val());
+           let amounttopay = 0;
+           if(quantity > 0){ amounttopay = price * quantity; }
+           else{swal("Alert!!","Please Enter A Valid Quantity","error"); }
+           $("#amounttopay").val("N"+amounttopay);
+       }
+      
+   });
+
+   //Purchase Data Pin
+   $("#datapinForm").submit(function(e){
+      
+
+      if($("#thetranspin").val() == null || $("#thetranspin").val() == ''){
+          e.preventDefault();
+          $("#transpinbtn").attr("action-btn","datapin-btn");
+          
+          let dataplan = $('#datapinplan').find(":selected").attr('dataname');
+          let msg = "You are about to purchase " + $("#datapinquantity").val()+" data pin of ";
+         
+          msg+='"'+$('#datanetworkid').find(":selected").attr('networkname') + '" ' + dataplan +" plan at ";
+          msg+='"' + $("#amounttopay").val() + '"' + " with business name " + '"' + $("#businessname").val() +'"';
+          msg+=" <br/> Do you wish to continue?"
+
+          $("#continue-transaction-prompt-msg").html(msg);
+          $("#continue-transaction-prompt-btn").click();
+
+          return;
+      }
+
+      $('#datapin-btn').removeClass("gradient-highlight");
+      $('#datapin-btn').addClass("btn-secondary");
+      $('#datapin-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
+      
+  });
+
+
+
+        // ----------------------------------------------------------------------------
+        // Wallet Management
+        // ----------------------------------------------------------------------------
+
+
+        $("#transfertype").on("change",function(){
+            if($(this).val() == "wallet-wallet"){
+                $("#walletreceiver").show();
+                $("#walletreceiverinput").attr("required","required");
+            }else{$("#walletreceiver").hide();  $("#walletreceiverinput").removeAttr("required");}
+            $("#amounttopay").val("N0.00");
+        });
+
+        $("#wallettransferamount").on("keyup",function(){
+            let amount = parseInt($('#wallettransferamount').val());
+            let charges = parseInt($('#wallettowalletcharges').text());
+            if($("#transfertype").val() == "wallet-wallet"){amounttopay = amount+charges;} else{amounttopay = amount+0;}
+            $("#amounttopay").val("N"+amounttopay);
+        });
+
+        //Submit Transfer Request
+        $("#transferForm").submit(function(e){
+           
+           if($("#thetranspin").val() == null || $("#thetranspin").val() == ''){
+               e.preventDefault();
+               $("#transpinbtn").attr("action-btn","transfer-btn");
+               
+               let msg = "You are about to perform a  ";
+               let action ="Wallet To Wallet";
+            
+               if($("#transfertype").val() == 'referral-wallet'){action ="Referal To Wallet Transfer"; receiver="your main wallet.";}
+               else {action ="Wallet To Wallet Transfer"; receiver=$("#walletreceiverinput").val();}
+               
+               msg+=action+" of N"+$('#wallettransferamount').val()+ " to "+receiver;
+               msg+=" <br/> Do you wish to continue?"
+
+               $("#continue-transaction-prompt-msg").html(msg);
+               $("#continue-transaction-prompt-btn").click();
+
+               return;
+           }
+
+           $('#transfer-btn').removeClass("gradient-highlight");
+           $('#transfer-btn').addClass("btn-secondary");
+           $('#transfer-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
+           
+        });
+
+        // ----------------------------------------------------------------------------
+        // Contact Page Management
+        // ----------------------------------------------------------------------------
+
+        //Send Contact Message
+        $("#message-form").submit(function(e){
+            e.preventDefault();
+
+            $('#message-btn').removeClass("gradient-highlight");
+            $('#message-btn').addClass("btn-secondary");
+            $('#message-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Sending ...');
+            
+            
+            $.ajax({
+                url:'home/includes/route.php?save-message',
+                data: new FormData($(this)[0]),
+                cache: false,
+                contentType: false,
+                processData: false,
+                method: 'POST',
+                type: 'POST',
+                success:function(resp){
+                    console.log(resp);
+                    if(resp == 0){
+                        swal('Alert!!',"Message Sent Successfully, We Would Get Back To You Soon.","success");
+                        $("#message-form")[0].reset();
+                    }
+                    else{
+                        swal('Alert!!',"Unexpected Error, Please Contact Our Customer Support Team.","error");
+                    }
+
+                    $('#message-btn').removeClass("btn-secondary");
+                    $('#message-btn').addClass("gradient-highlight");
+                    $('#message-btn').html("Send Message");
+
+                }
+            });
+
+        });
+
+        // ----------------------------------------------------------------------------
+        // Alpha Topup Management
+        // ----------------------------------------------------------------------------
+		
+		//If Alpha Plan Is Selected, Get And Set The Price
+        $("#alphaplan").on("change",function(){
+        let useraccount = getCookie("loginAccount");
+           useraccount=useraccount.replace(/%3D/g,"=");
+           useraccount=atob(useraccount);
+           useraccount = parseInt(useraccount);
+
+            if(useraccount == 3){$("#amounttopay").val("N"+$('#alphaplan').find(":selected").attr('vendor'));}
+            if(useraccount == 2){$("#amounttopay").val("N"+$('#alphaplan').find(":selected").attr('agent'));}
+            else{$("#amounttopay").val("N"+$('#alphaplan').find(":selected").attr('user'));}
+        });
+		
+		//Purchase Alpha Plan
+        $("#alphaplanForm").submit(function(e){
+           
+
+           if($("#thetranspin").val() == null || $("#thetranspin").val() == ''){
+               e.preventDefault();
+               $("#transpinbtn").attr("action-btn","alpha-plan-btn");
+               
+               let msg = "You are about to purchase ";
+               let dataplan = $('#alphaplan').find(":selected").attr('plan');
+               msg+= dataplan + " Alpha Topup at " + $("#amounttopay").val() + " for the phone number " + '"' + $("#phone").val() +'"';
+               msg+=" <br/> Do you wish to continue?"
+
+               $("#continue-transaction-prompt-msg").html(msg);
+               $("#continue-transaction-prompt-btn").click();
+
+               return;
+           }
+
+           $('#alpha-plan-btn').removeClass("gradient-highlight");
+           $('#alpha-plan-btn').addClass("btn-secondary");
+           $('#alpha-plan-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
+           
+       });
+
+      
+    });
+
+
+    function copyToClipboard(url){
+              var $temp=$("<input>");
+              $("body").append($temp);
+              $temp.val(url).select();
+              document.execCommand("copy");
+              $temp.remove();
+              swal("Success!!","Copied To Clipboard Successfully","success");
+    }
+
+    function calculatePaystackCharges(){
+        let charges = $("#paystackcharges").val();
+        let amount = $("#amount").val();
+        amount = parseInt(amount);
+        charges = parseFloat(charges);
+
+        if(amount > 2500){
+            let amounttopay = amount;
+            let discount= 0;
+
+            discount = ((amount * charges)/100) + 100;
+            amounttopay = amount - discount;
+
+            $("#amounttopay").val("N"+amounttopay);
+            $("#charges").val("N"+discount);
+        }
+        else{
+            let amounttopay = amount;
+            let discount= 0;
+
+            discount = (amount * charges)/100;
+            amounttopay = amount - discount;
+
+            $("#amounttopay").val("N"+amounttopay);
+            $("#charges").val("N"+discount);
+        }
+
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1);
+            if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+        }
+        return "";
+    }
+    
+    function verifyNetwork(){
+        var selNetwork=$('#networkid').find(":selected").attr('networkname');
+        var verNetwork="";
+        var phoneT = document.getElementById('phone').value;
+        var phoneStr = phoneT.substr(0,4);
+        
+        if(phoneT==="" || phoneT.length<6)
+        {
+            document.getElementById('verifyer').innerHTML = "";
+        }
+        else{
+        if(/0702|0704|0803|0806|0703|0706|0813|0816|0810|0814|0903|0906|0913/.test(phoneStr))
+        {
+            verNetwork="MTN";
+        }
+        else if(/0805|0807|0705|0815|0811|0905/.test(phoneStr))
+        {
+            verNetwork="GLO";
+        }
+        else if(/0702|0704|0803|0806|0703|0706|0813|0816|0810|0814|0903|0906|0913/.test(phoneStr))
+        {
+            verNetwork="GIFTING";
+        }
+        else if(/0802|0808|0708|0812|0701|0901|0902|0907|0912/.test(phoneStr))
+        {
+            verNetwork="AIRTEL";
+        }
+        else if(/0809|0818|0817|0908|0909/.test(phoneStr))
+        {
+            verNetwork="9MOBILE";
+        }
+        else if(/0804/.test(phoneStr))
+        {
+            verNetwork="NTEL";
+        }
+        else
+        {
+            verNetwork="Unable to identify network !";
+        }
+        if (selNetwork=="ETISALAT") {
+                selNetwork="9MOBILE";}
+                
+            if (verNetwork==selNetwork)
+            {
+                var ic = "<i class = 'fas fa-check-circle' style ='color: #4BB543;'></i>";
+            }
+            else 
+            {
+                ic = "<i class = 'fas fa-exclamation-triangle' style ='color:#B33A3A'></i>";
+            }
+        
+        document.getElementById('verifyer').innerHTML = "Identified Network: <b>"+verNetwork+"  "+ic+"</b><br><b> Note: </b> Ignore warning for <b>Ported Numbers</b>";
+    }}
+
+
+    function selectNetworkByIcon(name){
+        $("option[networkname]").removeAttr("selected");
+        $("option[networkname='"+name+"']").attr("selected","selected");
+        let sme = $('#networkid').find(":selected").attr('sme');
+            let gifting = $('#networkid').find(":selected").attr('gifting');
+            let corporate = $('#networkid').find(":selected").attr('corporate');
+            let networkname = $('#networkid').find(":selected").attr('networkname');
+            let thegroup='<option value="">Select Type</option>';
+
+                //Check If Network Is Disabled
+                if(sme=="On"){
+                    thegroup+='<option value="SME">SME</option>';
+                }
+
+                //Check If Network Is Disabled
+                if(gifting=="On"){
+                   thegroup+='<option value="Gifting">Gifting</option>';
+                }
+
+                //Check If Network Is Disabled
+                if(corporate=="On"){
+                   thegroup+='<option value="Corporate">Corporate</option>';
+                }
+                $("#datagroup").html(thegroup);
+    }
+
+    
+    function selectExamByIcon(name){
+        $("option[providername]").removeAttr("selected");
+        $("option[providername='"+name+"']").attr("selected","selected");
+    }
+
+    
+
+    
+</script>
+</body>
+</html>

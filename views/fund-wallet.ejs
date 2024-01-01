@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />/>
+<title>Fund Wallet</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" media="all">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>   
+<link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+<!-- Fantasy -->
+<link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet">
+<style>
+.radio-view{
+  margin: auto;
+  padding: 0;
+  position:relative;
+  max-width:520px;
+
+}
+
+
+.iphone {
+  background: #ffffff;
+  border-radius: 1em;
+  box-sizing: border-box;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
+.iphone .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.75em;
+  margin-bottom: 2em;
+}
+.iphone .album-cover {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.iphone .album-cover img {
+  width: 160px;
+  height: 156px;
+  border-radius: 50%;
+}
+.iphone .album-cover .song-title {
+  
+  margin-top:10px;
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  color: #65717e;
+}
+.iphone .album-cover .artist-title {
+  text-align: center;
+  margin-top: 1em;
+  padding: 3px 20px 3px 20px;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #3333ff;
+  border-radius: 5px;
+}
+.iphone .track {
+  margin-top: 1em;
+  height: 10px;
+}
+.iphone .track div {
+  width: 5%;
+  height: 100%;
+  background: #3333ff;
+  opacity: 0.75;
+  border-radius: 15px;
+}
+.iphone .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+.iphone .lyrics {
+  color: #7e8a98;
+  margin-top: 2em;
+  text-align: center;
+  font-size: 0.75em;
+  display: flex;
+  flex-direction: column;
+}
+
+.neu {
+  box-shadow: -5px -5px 15px 0px #ffffff9e, 5px 5px 15px 0px #a3b1c6a8;
+  background: #e0e5ec;
+  border-radius: 2em;
+  border: 0;
+}
+
+.btn-r {
+  padding: 15px 20px 15px 20px;
+  border-radius: 30px;
+  color: #7e8a98;
+  outline: none;
+  cursor: pointer;
+  margin:0 25px 0px 25px;
+}
+.btn-r.lg {
+  font-size: 1em;
+}
+.btn-r:hover {
+  cursor: pointer;
+  background: #eff2f5;
+}
+
+.red {
+  color: #e22d49;
+}
+.spin {
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 20000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 20000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 20000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-transition: rotate(3600deg);
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+</style>
+<script src="/js/lib/jquery-3.6.0.min.js" defer></script>
+<script src="/js/lib/bootstrap.min.js" defer></script>
+<script src="/js/lib/sweetalert.min.js" defer></script>
+<script src="/js/lib/custom.js" defer></script>
+<script src="/js/fund-wallet.js" defer></script>
+</head>
+    
+<body class="theme-light">
+
+<div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+    
+<div id="page">
+    
+    <!-- Page Nav Title Header -->
+            <div class="header header-fixed header-logo-center">
+            <a href="/" class="header-title">LetsSUB</a>
+                        <a href="notifications" class="font-20 header-icon header-icon-4"><i class="fas fa-bell" style="color:#5b0e9a;"></i><span class="badge bg-red-dark">5</span></a>
+        </div>
+
+       <%- include("./menu.ejs") %>
+        
+        
+</div>        
+    
+		
+    <!-- Page content start here-->
+        <div class="page-content header-clear-medium">
+
+        
+        
+        <div class="card card-style bg-theme pb-0">
+            <div class="content" id="tab-group-1">
+                <div class="tab-controls tabs-small tabs-rounded" data-highlight="bg-grey">
+                    <a href="#" data-active data-bs-toggle="collapse" data-bs-target="#tab-1">Auto Bank Transfer</a>
+                    <a href="#" data-bs-toggle="collapse" data-bs-target="#tab-3">Manual</a>
+                </div>
+                <div class="clearfix mb-3"></div>
+                <div data-bs-parent="#tab-group-1" class="collapse show" id="tab-1">
+                <div class="text-center">
+                    <p class="text-center">
+                       <p class="text-primary">Transfer Money to Any Account below, Your Wallet will be funded Automatically</p>
+                    </p>
+                    <p class="mb-2 text-dark font-600 font-16"><b>Account No: </b>4557953571</p>
+                    <p class="mb-2 text-danger font-600 font-15"><b></b>No Charges : 0%</p>
+                    <button class="btn font-700" style="background-color:#5b0e9a;"onclick="copyToClipboard('4557953571')"><i class="fa fa-copy" aria-hidden="true"></i> Copy</button>
+                    <hr/>
+                                        <p class="mb-2 text-dark font-600 font-16"><b>Bank Name: </b>Moniepoint Bank</p>
+                    <p class="mb-2 text-dark font-600 font-16"><b>Account No: </b>6463492155</p>
+                    <p class="mb-2 text-danger font-600 font-15"><b></b>No Charges: 0%</p>
+                    <button class="btn font-700" style="background-color:#5b0e9a;" onclick="copyToClipboard('6463492155')"><i class="fa fa-copy" aria-hidden="true"></i> Copy</button>
+                    <hr/>
+                                        <p class="mb-2 text-dark font-600 font-16"><b>Bank Name: Wema Bank</p>
+                    <p class="mb-2 text-dark font-600 font-16"><b>Account No: </b>9518698002</p>
+                    <p class="mb-2 text-danger font-600 font-15"><b>Note: </b>No Charges: 0% </p>
+                    <button class="btn font-700" style="background-color:#5b0e9a;" onclick="copyToClipboard('9518698002')"><i class="fa fa-copy" aria-hidden="true"></i> Copy</button>
+                    <hr/>
+                                        <p class="mb-2 text-dark font-600 font-16"><b>Bank Name: </b>Sterling Bank</p>
+                    <p class="mb-2 text-dark font-600 font-16"><b>Account No: </b>9307678551</p>
+                    <p class="mb-2 text-danger font-600 font-15"><b>Note: </b> Automated bank transfer attracts additional charges of 0% only.</p>
+                    <button class="btn btn-dark font-700 rounded-xl mt-3" onclick="copyToClipboard('9307678551')">Copy<i class="fa fa-copy" aria-hidden="true"></i> </button>
+                                    </div>
+                </div>
+
+                <div data-bs-parent="#tab-group-1" class="collapse" id="tab-2">
+                        <div class="text-center">
+                            <p class="text-center">
+                                <span class="icon icon-l gradient-blue shadow-l rounded-sm">
+                                    <i class="fa fa-arrow-up font-30 color-white"></i>
+                                </span>
+                            </p>
+                            <h4 class="text-primary">FUND WALLET</h4>
+                            <p class="mb-2 text-dark font-600 font-16">
+                                Pay with card, bank transfer, ussd, or bank deposit. Secured by Paystack
+                            </p>
+                    
+                        </div>
+                        
+                                                    <h3 class="text-center text-danger">Opps!! Paystack Payment Is Disabled, Please Contact Admin</h3>
+                                        </div>
+
+                <div data-bs-parent="#tab-group-1" class="collapse" id="tab-3">
+                <div class="text-center">
+                    <p class="text-center">
+                        <span class="icon icon-l gradient-blue shadow-l rounded-sm">
+                            <i class="fa fa-arrow-up font-30 color-white"></i>
+                        </span>
+                    </p>
+                    <h4 class="text-primary">FUND WALLET</h4>
+                    <p class="mb-2 text-dark font-600 font-16"><b>Bank Name: </b>Use automated</p>
+                    <p class="mb-2 text-dark font-600 font-16"><b>Account Name: </b>Use u</p>
+                    <p class="mb-2 text-dark font-600 font-16"><b>Account No: </b>0</p>
+                    <p class="mb-2 text-danger font-600 font-15"><b>Note: </b> Please contact admin After you made the transfer.</p>
+                    <button class="btn btn-primary font-700 rounded-xl mt-3" onclick="copyToClipboard('0')">Copy Account No</button>
+                    <a class="btn btn-success font-700 rounded-xl mt-3" href="https://wa.me/23409013678439">Chat Admin</a>
+                    
+                </div>
+                </div>
+
+                
+                
+            </div>
+        </div> 
+
+</div>
+</body>
+</html>

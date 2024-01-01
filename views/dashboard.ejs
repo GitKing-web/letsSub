@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>Homepage</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" media="all">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>      
+<link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+<!-- Fantasy -->
+<link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet">
+<style>
+.radio-view{
+  margin: auto;
+  padding: 0;
+  position:relative;
+  max-width:520px;
+
+}
+
+
+.iphone {
+  background: #ffffff;
+  border-radius: 1em;
+  box-sizing: border-box;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
+.iphone .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.75em;
+  margin-bottom: 2em;
+}
+.iphone .album-cover {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.iphone .album-cover img {
+  width: 160px;
+  height: 156px;
+  border-radius: 50%;
+}
+.iphone .album-cover .song-title {
+  
+  margin-top:10px;
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  color: #65717e;
+}
+.iphone .album-cover .artist-title {
+  text-align: center;
+  margin-top: 1em;
+  padding: 3px 20px 3px 20px;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #3333ff;
+  border-radius: 5px;
+}
+.iphone .track {
+  margin-top: 1em;
+  height: 10px;
+}
+.iphone .track div {
+  width: 5%;
+  height: 100%;
+  background: #3333ff;
+  opacity: 0.75;
+  border-radius: 15px;
+}
+.iphone .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+.iphone .lyrics {
+  color: #7e8a98;
+  margin-top: 2em;
+  text-align: center;
+  font-size: 0.75em;
+  display: flex;
+  flex-direction: column;
+}
+
+.neu {
+  box-shadow: -5px -5px 15px 0px #ffffff9e, 5px 5px 15px 0px #a3b1c6a8;
+  background: #e0e5ec;
+  border-radius: 2em;
+  border: 0;
+}
+
+.btn-r {
+  padding: 15px 20px 15px 20px;
+  border-radius: 30px;
+  color: #7e8a98;
+  outline: none;
+  cursor: pointer;
+  margin:0 25px 0px 25px;
+}
+.btn-r.lg {
+  font-size: 1em;
+}
+.btn-r:hover {
+  cursor: pointer;
+  background: #eff2f5;
+}
+
+.red {
+  color: #e22d49;
+}
+.spin {
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 20000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 20000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 20000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-transition: rotate(3600deg);
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+</style>
+<script src="/js/lib/jquery-3.6.0.min.js" defer></script>
+<script src="/js/lib/bootstrap.min.js" defer></script>
+<script src="/js/lib/sweetalert.min.js" defer></script>
+<script src="/js/lib/custom.js" defer></script>
+<script src="/js/dashboard.js" defer></script>
+</head>
+    
+<body class="theme-light">
+
+<div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+    
+<div id="page">
+    
+    <!-- Page Nav Title Header -->
+            <div class="header header-fixed header-logo-center">
+            <a href="/" class="header-title">Let'sSUB</a>
+        </div>
+
+        <<%- include("./menu.ejs") %>
+        
+        
+</div>        
+    
+		
+    <!-- Page content start here-->
+        <div class="page-content header-clear-medium">
+
+        <div class="card card-style bg-20" data-card-height="200" 
+           
+            style="height: 130px; background-image: linear-gradient(to top, #5b0e9a 0%, #5b0e9a 100%);">
+            <!-- style="height: 130px; background-image: url('../../assets/img/bg.jpg')"> -->
+            <div class="card-top ps-3 pt-2">
+                <h1 class="color-white font-19"  style="text-shadow: 2px 2px 2px #000000;">Hi, khalid</h1>
+            </div>
+            <div class="card-top pe-3 pt-2">
+                <h5 class="color-white float-end"  style="text-shadow: 2px 2px 2px #000000;">(<b>Subscriber</b>)</h5>
+            </div>
+            <div class="card-center ps-3 pt-2">
+                <h2 class="color-white font-20" style="text-shadow: 2px 2px 2px #000000;">
+                N1000.00 
+                </h2>
+                <h4 class="color-white font-16"  style="text-shadow: 2px 2px 2px #000000;">
+                Wallet Balance
+                </h4>
+            </div>
+            <div class="card-center pe-3 pt-2">
+            <a href="fund-wallet" class="float-end text-center">
+                    <span class="icon icon-l bg-light shadow-l rounded-sm">
+                        <i class="fa fa-arrow-up font-18" style="color:#5b0e9a"></i>
+                    </span>
+                    <h5 class="mb-0 pt-1 font-14 text-white" style="text-shadow: 2px 2px 2px #000000;">Add Funds</h5>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="card card-style mt-n3">
+            <div class="content mb-3 mt-3">
+               <div>
+                <h5>Services</h5>
+                <hr/>
+               </div>
+
+                <div class="row text-center mb-0">
+                    
+                <a href="buy-airtime" class="col-4 mt-2">
+                        <span class="icon icon-l rounded-sm" style="color:#5b0e9a; color:#5b0e9a;">
+                            <i class="fa fa-signal fa-2x"></i>
+                        </span>
+                        <p class="badge " style="background-color:#5b0e9a; mb-0 pt-1 font-11">Buy Airtime</p>
+                    </a>
+
+                    <a href="buy-data" class="col-4 mt-2">
+                        <span class="icon icon-l rounded-sm" style="color:#5b0e9a;">
+                            <i class="fa fa-wifi font-25"></i>
+                        </span>
+                        <p class="badge " style="background-color:#5b0e9a; mb-0 pt-1 font-11">Buy Data</p>
+                    </a>
+
+                    
+                    <a href="transactions" class="col-4 mt-2">
+                        <span class="icon icon-l shadow-l rounded-sm" style="color:#5b0e9a;">
+                            <i class="fa fa-receipt font-18"></i>
+                        </span>
+                        <p class="badge " style="background-color:#5b0e9a; mb-0 pt-1 font-13">Transactions</p>
+                    </a>
+
+                    
+                    <a href="pricing" class="col-4 mt-2">
+                        <span class="icon icon-l shadow-l rounded-sm" style="color:#5b0e9a;">
+                            <i class="fa fa-list font-18"></i>
+                        </span>
+                        <p class="badge " style="background-color:#5b0e9a; mb-0 pt-1 font-13">Pricing</p>
+                    </a>
+
+                    <a href="fund-wallet" class="col-4 mt-2">
+                        <span class="icon icon-l shadow-l rounded-sm" style="color:#5b0e9a;">
+                            <i class="fa fa-arrow-up font-18"></i>
+                        </span>
+                        <p class="badge " style="background-color:#5b0e9a; mb-0 pt-1 font-13">Add Fund</p>
+                    </a>
+
+                    <a href="profile" class="col-4 mt-2">
+                        <span class="icon icon-l shadow-l rounded-sm" style="color:#5b0e9a;">
+                            <i class="fa fa-user  font-18"></i>
+                        </span>
+                        <p class="badge " style="background-color:#5b0e9a; mb-0 pt-1 font-13">Profile</p>
+                    </a>
+                    
+                    <a href="transfer" class="col-4 mt-2">
+                        <span class="icon icon-l shadow-l rounded-sm" style="color:#5b0e9a;">
+                            <i class="fa fa-envelope font-18"></i>
+                        </span>
+                        <p class="badge " style="background-color:#5b0e9a; mb-0 pt-1 font-13">Wallet to Bank</p>
+                    </a>
+
+
+                    <a href="logout" class="col-4 mt-2">
+                        <span class="icon icon-l shadow-l rounded-sm" style="color:#5b0e9a;">
+                            <i class="fa fa-lock  font-18"></i>
+                        </span>
+                        <p class="badge " style="background-color:#5b0e9a; mb-0 pt-1 font-13">Logout</p>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+</div>
+</body>
+</html>

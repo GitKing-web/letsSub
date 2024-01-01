@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>Profile</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" media="all">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+<link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+<!-- Fantasy -->
+<link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet">
+<style>
+.radio-view{
+  margin: auto;
+  padding: 0;
+  position:relative;
+  max-width:520px;
+
+}
+
+
+.iphone {
+  background: #ffffff;
+  border-radius: 1em;
+  box-sizing: border-box;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
+.iphone .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.75em;
+  margin-bottom: 2em;
+}
+.iphone .album-cover {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.iphone .album-cover img {
+  width: 160px;
+  height: 156px;
+  border-radius: 50%;
+}
+.iphone .album-cover .song-title {
+  
+  margin-top:10px;
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  color: #65717e;
+}
+.iphone .album-cover .artist-title {
+  text-align: center;
+  margin-top: 1em;
+  padding: 3px 20px 3px 20px;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #3333ff;
+  border-radius: 5px;
+}
+.iphone .track {
+  margin-top: 1em;
+  height: 10px;
+}
+.iphone .track div {
+  width: 5%;
+  height: 100%;
+  background: #3333ff;
+  opacity: 0.75;
+  border-radius: 15px;
+}
+.iphone .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+.iphone .lyrics {
+  color: #7e8a98;
+  margin-top: 2em;
+  text-align: center;
+  font-size: 0.75em;
+  display: flex;
+  flex-direction: column;
+}
+
+.neu {
+  box-shadow: -5px -5px 15px 0px #ffffff9e, 5px 5px 15px 0px #a3b1c6a8;
+  background: #e0e5ec;
+  border-radius: 2em;
+  border: 0;
+}
+
+.btn-r {
+  padding: 15px 20px 15px 20px;
+  border-radius: 30px;
+  color: #7e8a98;
+  outline: none;
+  cursor: pointer;
+  margin:0 25px 0px 25px;
+}
+.btn-r.lg {
+  font-size: 1em;
+}
+.btn-r:hover {
+  cursor: pointer;
+  background: #eff2f5;
+}
+
+.red {
+  color: #e22d49;
+}
+.spin {
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 20000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 20000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 20000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-transition: rotate(3600deg);
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+</style>
+<script src="/js/lib/jquery-3.6.0.min.js" defer></script>
+<script src="/js/lib/bootstrap.min.js" defer></script>
+<script src="/js/lib/sweetalert.min.js" defer></script>
+<script src="/js/lib/custom.js" defer></script>
+<script src="/js/profile.js" defer></script>
+</head>
+    
+<body class="theme-light">
+
+<div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+    
+<div id="page">
+    
+    <!-- Page Nav Title Header -->
+            <div class="header header-fixed header-logo-center">
+            <a href="/" class="header-title">Let'sSUB</a>
+        </div>
+
+       <%- include("./menu.ejs") %>
+        
+        
+</div>        
+    
+		
+    <!-- Page content start here-->
+        <div class="page-content header-clear-medium">
+        
+        
+        <div class="card card-style bg-theme pb-0">
+            <div class="content" id="tab-group-1">
+                <div class="tab-controls tabs-small tabs-rounded" data-highlight="bg-highlight">
+                    <a href="#" data-active data-bs-toggle="collapse" data-bs-target="#tab-1">Profile</a>
+                    <a href="#" data-bs-toggle="collapse" data-bs-target="#tab-2">Password</a>
+                    <a href="#" data-bs-toggle="collapse" data-bs-target="#tab-3">Pin</a>
+                </div>
+                <div class="clearfix mb-3"></div>
+                <div data-bs-parent="#tab-group-1" class="collapse show" id="tab-1">
+                    <p class="mb-n1 color-highlight font-600 font-12">Account Details</p>
+                        <h4>Basic Information</h4>
+                        
+                        <div class="list-group list-custom-small">
+                            <a href="#">
+                                <i class="fa font-14 fa-user rounded-xl shadow-xl color-blue-dark"></i>
+                                <span><b>Name: </b> khalid mujahid</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa font-14 fa-envelope rounded-xl shadow-xl color-blue-dark"></i>
+                                <span><b>Email: </b> binkhalid267@gmail.com</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                            <a href="#"> 
+                                <i class="fa font-14 fa-phone rounded-xl shadow-xl color-blue-dark"></i>
+                                <span><b>Phone: </b> 09013678439</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa font-14 fa-globe rounded-xl shadow-xl color-blue-dark"></i>
+                                <span><b>State: </b> Niger</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>   
+                                        
+                        </div>
+
+                        <p class="mb-n1 mt-2 color-highlight font-600 font-12">Referral</p>
+                        <h4>Referral Link</h4>
+                        <div class="list-group list-custom-small">
+                            <a href="#">
+                                <input type="text" class="form-control" readonly value="http://127.0.0.1:3001/register/?referral=09013678439" />
+                            </a>
+                            <div>
+                                <button class="btn btn-danger btn-sm" onclick="copyToClipboard('http://127.0.0.1:3001/register/?referral=09013678439')">Copy Link</button>
+                            </div>
+                        </div>
+                        
+                                                
+                </div>
+
+                <div data-bs-parent="#tab-group-1" class="collapse" id="tab-2">
+                    <p class="mb-n1 color-highlight font-600 font-12">Update Login Details</p>
+                        <h4>Login Details</h4>
+                        
+                        <form id="passForm" method="post">
+                        <div class="mt-5 mb-3">
+                            
+                            <div class="input-style has-borders no-icon input-style-always-active mb-4">
+                                <input type="password" class="form-control" id="old-pass" name="oldpass" placeholder="Old Password" required>
+                                <label for="old-pass" class="color-highlight">Old Password</label>
+                                <em>(required)</em>
+                            </div>
+                            <div class="input-style has-borders no-icon input-style-always-active  mb-4">
+                                <input type="password" class="form-control" id="new-pass" name="newpass" placeholder="New Password" required>
+                                <label for="new-pass" class="color-highlight">New Password</label>
+                                <em>(required)</em>
+                            </div>
+
+                            <div class="input-style has-borders no-icon input-style-always-active mb-4">
+                                <input type="password" class="form-control" id="retype-pass" placeholder="Retype Password" required>
+                                <label for="retype-pass" class="color-highlight">Retype Password</label>
+                                <em>(required)</em>
+                            </div>
+                        </div>
+                        <button type="submit" id="update-pass-btn" style="width: 100%;" class="btn btn-full btn-l font-600 font-15 gradient-highlight mt-4 rounded-s">
+                                Update Password
+                        </button>
+                        </form>
+                </div>
+
+                <div data-bs-parent="#tab-group-1" class="collapse" id="tab-3">
+                    <p class="mb-n1 color-highlight font-600 font-12">Update Transaction Pin</p>
+                        <h4>Transaction Pin</h4>
+                        
+                        <form id="pinForm" method="post">
+                        <div class="mt-3 mb-3">
+                            <p class="text-danger"><b>Note: </b> The Default Transaction Pin Is '1234'. Your Transaction Pin should be a four digit number. </p>
+                            <div class="input-style has-borders no-icon input-style-always-active mb-4">
+                                <input type="number" class="form-control" id="old-pin" name="oldpin" placeholder="Old Pin" required>
+                                <label for="old-pin" class="color-highlight">Old Pin</label>
+                                <em>(required)</em>
+                            </div>
+                            <div class="input-style has-borders no-icon input-style-always-active  mb-4">
+                                <input type="number"  class="form-control" id="new-pin" name="newpin" placeholder="New Pin" required>
+                                <label for="new-pin" class="color-highlight">New Pin</label>
+                                <em>(required)</em>
+                            </div>
+
+                            <div class="input-style has-borders no-icon input-style-always-active mb-4">
+                                <input type="number" class="form-control" id="retype-pin" placeholder="Retype Pin" required>
+                                <label for="retype-pin" class="color-highlight">Retype Pin</label>
+                                <em>(required)</em>
+                            </div>
+                        </div>
+                        <button type="submit" id="update-pin-btn" style="width: 100%;" class="btn btn-full btn-l font-600 font-15 gradient-highlight mt-4 rounded-s">
+                                Update Pin
+                        </button>
+                        </form>
+                </div>
+                
+            </div>
+        </div> 
+
+</div>
+</body>
+</html>
