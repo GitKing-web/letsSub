@@ -32,7 +32,9 @@
 <script src="/js/lib/jquery-3.6.0.min.js" defer></script>
 <script src="/js/lib/bootstrap.min.js" defer></script>
 <script src="/js/lib/sweetalert.min.js" defer></script>
+<script src="/js/lib/axios.min.js" defer></script>
 <script src="/js/lib/custom.js" defer></script>
+<script src="/js/forget.js" defer></script>
 </head>
     
 <body class="theme-light">
@@ -54,7 +56,7 @@
                     </p>
                 </div>
 
-                <form id="emailCon" method="post">
+                <form id="emailCon">
                 <div class="px-2">
                     <div class="input-style  no-borders has-icon mb-4">
                         <i class="fa fa-at"></i>
@@ -78,12 +80,12 @@
                 </div>
                 </form>
 
-                <form id="verCon"  method="post">
+                <form id="verCon">
                 <div class="px2">
                     <div class="input-style  no-borders has-icon mb-4">
                         <i class="fa fa-barcode"></i>
                         <input type="number" class="form-control" id="vercode" name="code" placeholder="Verification Code" required />
-                        <label for="vercode" class="color-highlight">Verification Code</label>
+                        <label class="color-highlight">Verification Code</label>
                         <em>(required)</em>
                     </div>
                     <input type="hidden" name="email" id="veremail" />
@@ -145,143 +147,6 @@
     </div>
 
 </div>
-
-<script>
-    $("document").ready(function(){
-    //Enable Form Input
-    $("#email").click(function(){$(this).removeAttr("readonly"); });
-    $("#password").click(function(){$(this).removeAttr("readonly"); });
-    $("#password2").click(function(){$(this).removeAttr("readonly"); });
-
-    
-
-    //Check If Email Exist And Send Verification Code
-    $('#emailCon').submit(function(e){
-            e.preventDefault()
-            $('#submit-btn').removeClass("gradient-highlight");
-            $('#submit-btn').addClass("btn-secondary");
-            $('#submit-btn').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
-            
-            $.ajax({
-                url:'/recovery',
-                data: new FormData($(this)[0]),
-                cache: false,
-                contentType: false,
-                processData: false,
-                method: 'POST',
-                type: 'POST',
-                success:function(resp){
-                    console.log(resp);
-                    if(resp == 0){
-                        swal('Alert!!',"A Verification Code Have Been Sent To Your Email Address, Please Check And Provide The Code To Continue.","success");
-                        $("#emailCon").hide();
-			            $("#verCon").show();
-                        $("#veremail").val($("#email").val());
-                    }else if(resp == 1){
-                        swal('Alert!!',"Email Not Found, Please Verify Your Email And Try Again.","error");
-                    }
-                    else{
-                        swal('Alert!!',"Unknow Error, Please Contact Our Customer Support","error");
-                    }
-
-                $('#submit-btn').removeClass("btn-secondary");
-                $('#submit-btn').addClass("gradient-highlight");
-                $('#submit-btn').html("Recover Password");
-
-                }
-            })
-        });
-
-        //Verify Email Code And Allow Password Update
-        $('#verCon').submit(function(e){
-            e.preventDefault()
-            $('#submit-btn2').removeClass("gradient-highlight");
-            $('#submit-btn2').addClass("btn-secondary");
-            $('#submit-btn2').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
-            
-            $.ajax({
-                url:'/verify-code',
-                data: new FormData($(this)[0]),
-                cache: false,
-                contentType: false,
-                processData: false,
-                method: 'POST',
-                type: 'POST',
-                success:function(resp){
-                    console.log(resp);
-                    if(resp == 0){
-                        swal('Alert!!',"Code Verified, Please Enter Your New Password Below.","success");
-                        $("#emailCon").hide();
-                        $("#verCon").hide();
-                        $("#keyCon").show();
-                        $("#keyemail").val($("#email").val());
-			            $("#keycode").val($("#vercode").val());
-                    }else if(resp == 1){
-                        swal('Alert!!',"Incorrect Code Provided, Please Verify Details And Try Again.","error");
-                    }
-                    else{
-                        swal('Alert!!',"Unknow Error, Please Contact Our Customer Support","error");
-                    }
-
-                $('#submit-btn2').removeClass("btn-secondary");
-                $('#submit-btn2').addClass("gradient-highlight");
-                $('#submit-btn2').html("Verify Code");
-
-                }
-            })
-        });
-
-        //Update User Password``````````
-        $('#keyCon').submit(function(e){
-            e.preventDefault()
-
-            //Validate Password
-            $msg=""; 
-            if($("#password").val() != $("#password2").val()){$msg="New Password & Retyped Password Don't Match.";}
-            if($("#password").val().length > 15){$msg="Password should not be more than 15 character.";}
-            if($("#password").val().length < 8){$msg="Password should be at least 8 character.";}
-
-            if($msg != ""){swal("Alert!!",$msg,"info");  $msg=""; return; }
-
-            $('#submit-btn2').removeClass("gradient-highlight");
-            $('#submit-btn2').addClass("btn-secondary");
-            $('#submit-btn2').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing ...');
-            
-            $.ajax({
-                url:'/update-user-pass',
-                data: new FormData($(this)[0]),
-                cache: false,
-                contentType: false,
-                processData: false,
-                method: 'POST',
-                type: 'POST',
-                success:function(resp){
-                    console.log(resp);
-                    if(resp == 0){
-                        swal('Alert!!',"Password Updated Successfully, You Can Now Login With Your Details.","success");
-                        $("#verCon").hide();
-                        $("#keyCon").hide();
-                        $("#emailCon").show();
-                        $("#emailCon")[0].reset();
-                        $("#keyCon")[0].reset();
-                        $("#verCon")[0].reset();
-                    }else if(resp == 1){
-                        swal('Alert!!',"Unable To Update Password, Please Try Again Later.","error");
-                    }
-                    else{
-                        swal('Alert!!',"Unknow Error, Please Contact Our Customer Support.","error");
-                    }
-
-                $('#submit-btn2').removeClass("btn-secondary");
-                $('#submit-btn2').addClass("gradient-highlight");
-                $('#submit-btn2').html("Verify Code");
-
-                }
-            })
-        });
-
-    });
-</script>
 </body>
 </html>
 
